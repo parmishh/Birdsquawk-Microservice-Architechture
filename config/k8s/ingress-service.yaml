@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: ingress
+metadata:
+  name: ingress-dervice
+  annotations: 
+    kubernetes.io/ingress: nginx
+spec:
+  rules:
+     - host: birdsquawk-app.dev
+       http: 
+         paths:
+         - path: /api/birdsquawk/get
+           pathType: Prefix
+           backend:
+            service:
+             name: birdsquawk-service
+             port:
+              number: 5000    
+    
